@@ -1,0 +1,38 @@
+open netbeans create new project
+
+right click on project and select web service 
+
+go to design and add operation
+
+then build and deploy
+
+after create new project
+
+client file
+
+then go to index.html file and add
+ <form action="assign7servelet">
+                
+       Enter Number1:  <input type="text" name="number1" value="" />
+       Enter Number2:  <input type="text" name="number2" value="" />
+       <input type="submit" value="submit">
+       </form>
+
+ right click on project and select web service client
+right click on project and select servlet and give the name assign7servelet
+and click on check box then finish it
+
+
+drop the all operation file from web service reference to  assign7servelet.java
+
+make some changes in the code 
+double num1,num2;
+            num1=Double.parseDouble(request.getParameter("number1"));
+            num2=Double.parseDouble(request.getParameter("number2"));
+
+ out.println("<h1>Addition is  " + addition(num1,num2)+ "</h1>");
+            out.println("<h1>substraction is  " + substraction(num1,num2)+ "</h1>");
+            out.println("<h1>Multiplication  is  " + multiplication(num1,num2)+ "</h1>");
+            out.println("<h1>Division is  " + division(num1,num2)+ "</h1>");
+
+now right click on project and clean and build and run index.html file
