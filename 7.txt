@@ -1,0 +1,41 @@
+ <form action="assign7servelet" method="post">
+    Number 1: <input type="text" name="number1"><br>
+    Number 2: <input type="text" name="number2"><br><br>
+
+    <input type="submit" name="operation" value="add">
+    <input type="submit" name="operation" value="sub">
+    <input type="submit" name="operation" value="mul">
+    <input type="submit" name="operation" value="div">
+</form>
+
+
+ double num1 = Double.parseDouble(request.getParameter("number1"));
+        double num2 = Double.parseDouble(request.getParameter("number2"));
+        String operation = request.getParameter("operation");
+
+        double result = 0;
+        String opName = "";
+
+        switch (operation) {
+            case "add":
+                result = addition(num1, num2);
+                opName = "Addition";
+                break;
+            case "sub":
+                result = substraction(num1, num2);
+                opName = "Subtraction";
+                break;
+            case "mul":
+                result = multiplication(num1, num2);
+                opName = "Multiplication";
+                break;
+            case "div":
+                result = division(num1, num2);
+                opName = "Division";
+                break;
+            default:
+                opName = "Invalid Operation";
+                break;
+        }
+
+out.println("<h1>" + opName + " Result: " + result + "</h1>"); 
