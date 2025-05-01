@@ -1,0 +1,22 @@
+from mpi4py import MPI
+import numpy as np
+ARRAY_SIZE = 16
+comm = MPI.COMM_WORLD
+rank = comm.Get_rank()
+size = comm.Get_size()
+if rank == 0:
+    array = np.arange(1, ARRAY_SIZE + 1, dtype='i')  
+else:
+    array = None
+subarray_size = ARRAY_SIZE // size
+subarray = np.empty(subarray_size, dtype='i')
+comm.Scatter([array, MPI.INT], [subarray, MPI.INT], root=0)
+local_sum = np.sum(subarray)
+print(f"Process {rank} local sum is {local_sum}")
+sum_result = comm.reduce(local_sum, op=MPI.SUM, root=0)
+if rank == 0:
+    print(f"The sum of the elements is {sum_result}")
+
+# command for the run 
+    mpiexec -n 4 python mpi_sum.py
+
