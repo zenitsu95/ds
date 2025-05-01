@@ -18,5 +18,5 @@ if rank == 0:
     print(f"The sum of the elements is {sum_result}")
 
 # command for the run 
-    mpiexec -n 4 python mpi_sum.py
+    mpiexec -n 4 python arr_sum.py
 
